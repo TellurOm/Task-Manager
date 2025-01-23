@@ -1,0 +1,356 @@
+Last login: Thu Jan 23 13:55:59 on ttys006
+omtellur@Shiv PhoneBookProject % cd /Users/omtellur/gitfolder
+omtellur@Shiv gitfolder % git clone https://github.com/TellurOm/Task-Manager
+Cloning into 'Task-Manager'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+omtellur@Shiv gitfolder % cd /Users/omtellur/gitfolder/Task-Manager         
+omtellur@Shiv Task-Manager % git branch
+* main
+omtellur@Shiv Task-Manager % git init
+Reinitialized existing Git repository in /Users/omtellur/gitfolder/Task-Manager/.git/
+omtellur@Shiv Task-Manager % git branch feature/add-task
+omtellur@Shiv Task-Manager % git branch feature/delete-task
+omtellur@Shiv Task-Manager % git branch
+  feature/add-task
+  feature/delete-task
+* main
+omtellur@Shiv Task-Manager % touch Welcome.py
+omtellur@Shiv Task-Manager % git st
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Welcome.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+A	Welcome.py
+Switched to branch 'feature/add-task'
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Welcome.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Welcome.py
+
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git stash
+Saved working directory and index state WIP on feature/add-task: a9d51db Initial commit
+omtellur@Shiv Task-Manager % git checkout branch feature/delete-task
+error: pathspec 'branch' did not match any file(s) known to git
+error: pathspec 'feature/delete-task' did not match any file(s) known to git
+omtellur@Shiv Task-Manager % git checkout  feature/delete-task 
+Switched to branch 'feature/delete-task'
+omtellur@Shiv Task-Manager % git st
+On branch feature/delete-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % it st
+zsh: command not found: it
+omtellur@Shiv Task-Manager % git st
+On branch feature/delete-task
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Welcome.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git commit -m "First Commit in Deletetask"
+[feature/delete-task e67e24b] First Commit in Deletetask
+ 1 file changed, 3 insertions(+)
+ create mode 100644 Welcome.py
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+Switched to branch 'feature/add-task'
+omtellur@Shiv Task-Manager % git stash apply
+On branch feature/add-task
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Welcome.py
+
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Welcome.py
+
+omtellur@Shiv Task-Manager % git commit -m "Commit the add-task"
+[feature/add-task 1f88eb4] Commit the add-task
+ 1 file changed, 2 insertions(+)
+ create mode 100644 Welcome.py
+omtellur@Shiv Task-Manager % git branch
+* feature/add-task
+  feature/delete-task
+  main
+omtellur@Shiv Task-Manager % git merge feature/delete-task
+Auto-merging Welcome.py
+CONFLICT (add/add): Merge conflict in Welcome.py
+Automatic merge failed; fix conflicts and then commit the result.
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git commit -m "First conflict resolved"
+[feature/add-task 23737b8] First conflict resolved
+omtellur@Shiv Task-Manager % git branch
+* feature/add-task
+  feature/delete-task
+  main
+omtellur@Shiv Task-Manager % git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+omtellur@Shiv Task-Manager % git merge feature/add-task
+Updating a9d51db..23737b8
+Fast-forward
+ Welcome.py | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 Welcome.py
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+Switched to branch 'feature/add-task'
+omtellur@Shiv Task-Manager % git merge main
+Already up to date.
+omtellur@Shiv Task-Manager % git checkout feature/delete-task
+Switched to branch 'feature/delete-task'
+omtellur@Shiv Task-Manager % git merge main
+Updating e67e24b..23737b8
+Fast-forward
+ Welcome.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git st    
+On branch feature/delete-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % git commit "Commit 2"
+error: pathspec 'Commit 2' did not match any file(s) known to git
+omtellur@Shiv Task-Manager % git commit -m  "Commit 2"
+On branch feature/delete-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+Switched to branch 'feature/add-task'
+omtellur@Shiv Task-Manager % git merge main
+Already up to date.
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % git log
+commit 23737b89ea41de04cea47bdd26ebed968e6f5725 (HEAD -> feature/add-task, main, feature/delete-task)
+Merge: 1f88eb4 e67e24b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:40:11 2025 +0530
+
+    First conflict resolved
+
+commit 1f88eb474dec2bf7afc0cd06c972339979815df0
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:37:04 2025 +0530
+
+    Commit the add-task
+
+commit e67e24be7f843071dad92116c9333ee1e0d48a6b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:35:16 2025 +0530
+
+    First Commit in Deletetask
+
+commit a9d51db865c0ecf2ecdf4d5928a5607c4ab98be8 (origin/main, origin/HEAD)
+Author: TellurOm <tellurom2005@gmail.com>
+Date:   Thu Jan 23 15:22:19 2025 +0530
+
+    Initial commit
+omtellur@Shiv Task-Manager % git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+omtellur@Shiv Task-Manager % git remote add origin https://github.com/TellurOm/Task-Manager.git
+error: remote origin already exists.
+omtellur@Shiv Task-Manager % git push -u origin maiin
+error: src refspec maiin does not match any
+error: failed to push some refs to 'https://github.com/TellurOm/Task-Manager'
+omtellur@Shiv Task-Manager % git push -u origin main 
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 852 bytes | 852.00 KiB/s, done.
+Total 9 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/TellurOm/Task-Manager
+   a9d51db..23737b8  main -> main
+branch 'main' set up to track 'origin/main'.
+omtellur@Shiv Task-Manager % git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+Switched to branch 'feature/add-task'
+omtellur@Shiv Task-Manager % git push -u origin main      
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+omtellur@Shiv Task-Manager % git checkout feature/add-task
+Already on 'feature/add-task'
+omtellur@Shiv Task-Manager % git rebase main
+Current branch feature/add-task is up to date.
+omtellur@Shiv Task-Manager % git log 
+commit 23737b89ea41de04cea47bdd26ebed968e6f5725 (HEAD -> feature/add-task, origin/main, origin/HEAD, main, feature/delete-task)
+Merge: 1f88eb4 e67e24b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:40:11 2025 +0530
+
+    First conflict resolved
+
+commit 1f88eb474dec2bf7afc0cd06c972339979815df0
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:37:04 2025 +0530
+
+    Commit the add-task
+
+commit e67e24be7f843071dad92116c9333ee1e0d48a6b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:35:16 2025 +0530
+
+    First Commit in Deletetask
+
+commit a9d51db865c0ecf2ecdf4d5928a5607c4ab98be8
+Author: TellurOm <tellurom2005@gmail.com>
+Date:   Thu Jan 23 15:22:19 2025 +0530
+
+    Initial commit
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % git push --force-with-lease origin feature/add-task
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'feature/add-task' on GitHub by visiting:
+remote:      https://github.com/TellurOm/Task-Manager/pull/new/feature/add-task
+remote: 
+To https://github.com/TellurOm/Task-Manager
+ * [new branch]      feature/add-task -> feature/add-task
+omtellur@Shiv Task-Manager % git log
+commit 23737b89ea41de04cea47bdd26ebed968e6f5725 (HEAD -> feature/add-task, origin/main, origin/feature/add-task, origin/HEAD, main, feature/delete-task)
+Merge: 1f88eb4 e67e24b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:40:11 2025 +0530
+
+    First conflict resolved
+
+commit 1f88eb474dec2bf7afc0cd06c972339979815df0
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:37:04 2025 +0530
+
+    Commit the add-task
+
+commit e67e24be7f843071dad92116c9333ee1e0d48a6b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:35:16 2025 +0530
+
+    First Commit in Deletetask
+
+commit a9d51db865c0ecf2ecdf4d5928a5607c4ab98be8
+Author: TellurOm <tellurom2005@gmail.com>
+Date:   Thu Jan 23 15:22:19 2025 +0530
+
+    Initial commit
+omtellur@Shiv Task-Manager % git branch
+* feature/add-task
+  feature/delete-task
+  main
+omtellur@Shiv Task-Manager % git log --oneline
+23737b8 (HEAD -> feature/add-task, origin/main, origin/feature/add-task, origin/HEAD, main, feature/delete-task) First conflict resolved
+1f88eb4 Commit the add-task
+e67e24b First Commit in Deletetask
+a9d51db Initial commit
+omtellur@Shiv Task-Manager % squash 1f88eb4 Commit the add-task
+zsh: command not found: squash
+omtellur@Shiv Task-Manager % pick 1f88eb4 Commit the add-task
+zsh: command not found: pick
+omtellur@Shiv Task-Manager % git branch
+* feature/add-task
+  feature/delete-task
+  main
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Welcome.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+omtellur@Shiv Task-Manager % git add .
+omtellur@Shiv Task-Manager % git commit -m "LastSecond Commit"
+[feature/add-task 7d0e225] LastSecond Commit
+ 1 file changed, 2 insertions(+)
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % it st
+zsh: command not found: it
+omtellur@Shiv Task-Manager % git st
+On branch feature/add-task
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Welcome.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+omtellur@Shiv Task-Manager % git add .                        
+omtellur@Shiv Task-Manager % git commit -m "Last Commit"      
+[feature/add-task e21b0c0] Last Commit
+ 1 file changed, 2 insertions(+)
+omtellur@Shiv Task-Manager % git log
+commit e21b0c062979141039a0953b111d6a88cf67f5a3 (HEAD -> feature/add-task)
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 16:07:01 2025 +0530
+
+
+commit e21b0c062979141039a0953b111d6a88cf67f5a3 (HEAD -> feature/add-task)
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 16:07:01 2025 +0530
+
+    Last Commit
+
+commit 7d0e22560f9c1ed86dae9d42b9bb3eb48db56558
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 16:06:18 2025 +0530
+
+    LastSecond Commit
+
+commit 23737b89ea41de04cea47bdd26ebed968e6f5725 (origin/main, origin/feature/add-task, origin/HEAD, main, feature/delete-task)
+Merge: 1f88eb4 e67e24b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:40:11 2025 +0530
+
+    First conflict resolved
+
+commit 1f88eb474dec2bf7afc0cd06c972339979815df0
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:37:04 2025 +0530
+
+    Commit the add-task
+
+commit e67e24be7f843071dad92116c9333ee1e0d48a6b
+Author: TellurOm <telluromtellur2005@gmail.com>
+Date:   Thu Jan 23 15:35:16 2025 +0530
+
+    First Commit in Deletetask
+
+commit a9d51db865c0ecf2ecdf4d5928a5607c4ab98be8
+omtellur@Shiv Task-Manager % git push -u origin main
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+omtellur@Shiv Task-Manager % git branch
+* feature/add-task
+  feature/delete-task
+  main
+omtellur@Shiv Task-Manager % git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+omtellur@Shiv Task-Manager % git st
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+omtellur@Shiv Task-Manager % 
